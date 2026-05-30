@@ -57,7 +57,6 @@ To provide creators with powerful and easy-to-use SEO tools that help grow their
 ## 📜 License
 
 © AWTags — All Rights Reserved
-
----
+💜 Made with Passion by akashworldwide
 
 ### 💜 Made with Passion by AkashWorldwide
