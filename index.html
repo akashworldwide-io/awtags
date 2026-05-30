@@ -4,17 +4,126 @@
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
 <title>AWTags</title>
-<link rel="stylesheet" href="style.css">
-</head>
 
+<style>
+*{
+margin:0;
+padding:0;
+box-sizing:border-box;
+font-family:Arial,sans-serif;
+}
+
+body{
+background:#0f0a19;
+color:white;
+min-height:100vh;
+}
+
+.container{
+max-width:1200px;
+margin:auto;
+padding:40px 20px;
+}
+
+.badge{
+display:inline-block;
+padding:10px 20px;
+border-radius:999px;
+text-decoration:none;
+font-weight:bold;
+background:linear-gradient(90deg,#7c3aed,#a855f7);
+color:white;
+}
+
+.logo{
+text-align:center;
+font-size:60px;
+font-weight:bold;
+color:#c084fc;
+margin-top:20px;
+}
+
+.subtitle{
+text-align:center;
+margin:15px 0 40px;
+color:#ccc;
+}
+
+.cards{
+display:grid;
+grid-template-columns:repeat(auto-fit,minmax(250px,1fr));
+gap:20px;
+}
+
+.card{
+background:#181028;
+padding:25px;
+border-radius:15px;
+border:1px solid #2d1f46;
+}
+
+.card h2{
+margin-bottom:10px;
+color:#c084fc;
+}
+
+.card p{
+margin-bottom:20px;
+color:#ccc;
+}
+
+.btn{
+width:100%;
+padding:12px;
+border:none;
+border-radius:10px;
+background:#a855f7;
+color:white;
+cursor:pointer;
+font-weight:bold;
+}
+
+.tool-area{
+display:none;
+margin-top:30px;
+background:#181028;
+padding:20px;
+border-radius:15px;
+}
+
+.tool-area input{
+width:100%;
+padding:12px;
+border-radius:10px;
+border:none;
+margin-bottom:10px;
+}
+
+.result{
+margin-top:15px;
+background:#24153b;
+padding:15px;
+border-radius:10px;
+max-height:400px;
+overflow:auto;
+line-height:1.8;
+}
+
+.footer{
+text-align:center;
+margin-top:50px;
+color:#999;
+}
+</style>
+</head>
 <body>
 
 <div class="container">
 
-<div style="text-align:center; margin-bottom:20px;">
+<div style="text-align:center;">
 <a href="https://pay.mypaylink.in/?q=80OXaY"
 target="_blank"
-class="badge sponsor-badge">
+class="badge">
 💰 Sponsored
 </a>
 </div>
@@ -22,39 +131,15 @@ class="badge sponsor-badge">
 <h1 class="logo">AWTags</h1>
 
 <p class="subtitle">
-Free SEO Tools for Content Creators
+Free SEO Tools For Content Creators
 </p>
 
 <div class="cards">
 
 <div class="card">
-<h2>🏷️ Tag Generator</h2>
-<p>Generate optimized YouTube tags.</p>
-<button class="btn" onclick="showTool('tags')">
-Generate Tags
-</button>
-</div>
-
-<div class="card">
-<h2>🔥 Hashtag Generator</h2>
-<p>Create trending hashtags.</p>
-<button class="btn" onclick="showTool('hashtags')">
-Generate Hashtags
-</button>
-</div>
-
-<div class="card">
-<h2>🎯 Title Generator</h2>
-<p>Create engaging titles.</p>
-<button class="btn" onclick="showTool('titles')">
-Generate Titles
-</button>
-</div>
-
-<div class="card">
 <h2>🔑 Keyword Generator</h2>
-<p>Generate 50+ SEO keywords.</p>
-<button class="btn" onclick="showTool('keywords')">
+<p>Generate 50+ keywords</p>
+<button class="btn" onclick="showTool()">
 Generate Keywords
 </button>
 </div>
@@ -64,149 +149,45 @@ Generate Keywords
 <div id="tool-area" class="tool-area"></div>
 
 <div class="footer">
-© 2026 AWTags • All Rights Reserved
+© 2026 AWTags
 </div>
 
 </div>
 
 <script>
 
-function showTool(tool){
+function showTool(){
 
-const area = document.getElementById("tool-area");
-area.style.display = "block";
+document.getElementById("tool-area").style.display="block";
 
-if(tool==="tags"){
-area.innerHTML = `
-<h2>🏷️ Tag Generator</h2>
+document.getElementById("tool-area").innerHTML=`
 
-<input id="keyword" placeholder="Enter keyword">
-
-<button class="btn" onclick="generateTags()">
-Generate Tags
-</button>
-
-<div id="result" class="result"></div>
-`;
-}
-
-if(tool==="hashtags"){
-area.innerHTML = `
-<h2>🔥 Hashtag Generator</h2>
-
-<input id="keyword" placeholder="Enter keyword">
-
-<button class="btn" onclick="generateHashtags()">
-Generate Hashtags
-</button>
-
-<div id="result" class="result"></div>
-`;
-}
-
-if(tool==="titles"){
-area.innerHTML = `
-<h2>🎯 Title Generator</h2>
-
-<input id="keyword" placeholder="Enter keyword">
-
-<button class="btn" onclick="generateTitles()">
-Generate Titles
-</button>
-
-<div id="result" class="result"></div>
-`;
-}
-
-if(tool==="keywords"){
-area.innerHTML = `
 <h2>🔑 Keyword Generator</h2>
 
-<input id="keyword" placeholder="Enter keyword">
+<input
+id="keyword"
+placeholder="Enter keyword">
 
-<button class="btn" onclick="generateKeywords()">
-Generate Keywords
+<button
+class="btn"
+onclick="generateKeywords()">
+Generate
 </button>
 
-<div id="result" class="result"></div>
-`;
-}
+<div
+id="result"
+class="result">
+</div>
 
-window.scrollTo({
-top:document.body.scrollHeight,
-behavior:'smooth'
-});
-
-}
-
-function generateTags(){
-
-let k = document.getElementById("keyword").value.trim();
-
-if(!k){
-alert("Enter keyword");
-return;
-}
-
-document.getElementById("result").innerHTML = `
-• ${k}<br>
-• ${k} shorts<br>
-• ${k} viral<br>
-• ${k} trending<br>
-• best ${k}<br>
-• ${k} youtube<br>
-• ${k} tutorial<br>
-• ${k} tips
-`;
-
-}
-
-function generateHashtags(){
-
-let k = document.getElementById("keyword").value.trim();
-
-if(!k){
-alert("Enter keyword");
-return;
-}
-
-k = k.replaceAll(" ","");
-
-document.getElementById("result").innerHTML = `
-#${k}<br>
-#viral<br>
-#trending<br>
-#shorts<br>
-#youtube<br>
-#creator<br>
-#explore<br>
-#content
-`;
-
-}
-
-function generateTitles(){
-
-let k = document.getElementById("keyword").value.trim();
-
-if(!k){
-alert("Enter keyword");
-return;
-}
-
-document.getElementById("result").innerHTML = `
-• Best ${k} Tips<br>
-• Top 10 ${k} Secrets<br>
-• Amazing ${k} Guide<br>
-• ${k} Tutorial For Beginners<br>
-• Ultimate ${k} Strategy
 `;
 
 }
 
 function generateKeywords(){
 
-let k = document.getElementById("keyword").value.trim();
+let k =
+document.getElementById("keyword")
+.value.trim();
 
 if(!k){
 alert("Enter keyword");
@@ -214,6 +195,7 @@ return;
 }
 
 let keywords = [
+
 k,
 "best "+k,
 "top "+k,
@@ -224,6 +206,7 @@ k,
 "complete "+k,
 "advanced "+k,
 "easy "+k,
+
 k+" tutorial",
 k+" guide",
 k+" tips",
@@ -234,6 +217,7 @@ k+" training",
 k+" basics",
 k+" masterclass",
 k+" examples",
+
 k+" shorts",
 k+" reels",
 k+" reel",
@@ -244,33 +228,40 @@ k+" highlights",
 k+" compilation",
 k+" status",
 k+" clips",
+
 k+" youtube",
 k+" instagram",
 k+" facebook",
 k+" twitter",
 k+" social media",
+
 k+" seo",
 k+" keyword",
 k+" marketing",
 k+" content",
 k+" strategy",
+
 k+" 2026",
 k+" 2027",
 k+" update",
+
 "how to "+k,
 "what is "+k,
 "why "+k,
 "learn "+k,
+
 k+" for beginners",
-k+" for students",
 k+" for creators",
+
 "best "+k+" tools",
 "best "+k+" apps",
 "best "+k+" software",
+
 k+" ideas",
 k+" template",
 k+" checklist",
 k+" secrets"
+
 ];
 
 document.getElementById("result").innerHTML =
