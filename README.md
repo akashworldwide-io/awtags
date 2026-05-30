@@ -23,9 +23,9 @@ AWTags helps creators generate **YouTube Tags**, **Hashtags**, **SEO Keywords**,
 
 ---
 
-## 🎯 Our Mission
+## 🎯 Mission
 
-To provide creators with powerful and easy-to-use SEO tools that help grow their reach, visibility, and audience.
+Helping creators grow their content with smart, simple, and effective SEO tools.
 
 ---
 
@@ -40,7 +40,7 @@ To provide creators with powerful and easy-to-use SEO tools that help grow their
 
 ## 👨‍💻 Created By
 
-### 🌍 akashWorldwide
+### 🌍 akashworldwide
 
 🔗 Website: https://www.akashworldwide.in
 
@@ -57,6 +57,7 @@ To provide creators with powerful and easy-to-use SEO tools that help grow their
 ## 📜 License
 
 © AWTags — All Rights Reserved
-💜 Made with Passion by akashworldwide
 
-### 💜 Made with Passion by AkashWorldwide
+---
+
+### 💜 made with passion by akashworldwide
