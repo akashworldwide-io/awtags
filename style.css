@@ -1,0 +1,201 @@
+*{
+margin:0;
+padding:0;
+box-sizing:border-box;
+font-family:Arial,sans-serif;
+}
+
+body{
+background:#0f0a19;
+color:white;
+min-height:100vh;
+overflow-x:hidden;
+}
+
+/* Background Social Icons */
+
+.bg-icons{
+position:fixed;
+top:0;
+left:0;
+width:100%;
+height:100%;
+pointer-events:none;
+z-index:-1;
+}
+
+.bg-icons span{
+position:absolute;
+font-size:120px;
+opacity:0.06;
+}
+
+.bg-icons span:nth-child(1){
+top:10%;
+left:10%;
+}
+
+.bg-icons span:nth-child(2){
+top:15%;
+right:10%;
+}
+
+.bg-icons span:nth-child(3){
+bottom:15%;
+left:15%;
+}
+
+.bg-icons span:nth-child(4){
+bottom:20%;
+right:15%;
+}
+
+/* Main Container */
+
+.container{
+max-width:1200px;
+margin:auto;
+padding:40px 20px;
+}
+
+/* Header */
+
+.logo{
+text-align:center;
+font-size:52px;
+font-weight:bold;
+color:#c084fc;
+}
+
+.subtitle{
+text-align:center;
+color:#bdbdbd;
+margin-top:10px;
+margin-bottom:40px;
+}
+
+.badge{
+display:inline-block;
+background:#24153b;
+padding:8px 16px;
+border-radius:999px;
+color:#c084fc;
+margin-bottom:20px;
+}
+
+/* Cards */
+
+.cards{
+display:grid;
+grid-template-columns:repeat(auto-fit,minmax(300px,1fr));
+gap:20px;
+}
+
+.card{
+background:#181028;
+border:1px solid #2d1f46;
+border-radius:16px;
+padding:25px;
+transition:0.3s;
+}
+
+.card:hover{
+transform:translateY(-5px);
+border-color:#a855f7;
+}
+
+.card h2{
+color:#c084fc;
+margin-bottom:15px;
+}
+
+.card p{
+color:#d0d0d0;
+line-height:1.6;
+margin-bottom:20px;
+}
+
+/* Buttons */
+
+.btn{
+width:100%;
+padding:12px;
+border:none;
+border-radius:10px;
+background:#a855f7;
+color:white;
+cursor:pointer;
+font-weight:bold;
+font-size:15px;
+transition:.3s;
+}
+
+.btn:hover{
+background:#9333ea;
+}
+
+.copy-btn{
+margin-top:10px;
+background:#6d28d9;
+}
+
+/* Tool Section */
+
+.tool-area{
+margin-top:40px;
+background:#181028;
+padding:25px;
+border-radius:16px;
+border:1px solid #2d1f46;
+display:none;
+}
+
+.tool-area h2{
+color:#c084fc;
+margin-bottom:15px;
+}
+
+.tool-area input{
+width:100%;
+padding:15px;
+border:none;
+border-radius:10px;
+margin-bottom:15px;
+font-size:16px;
+outline:none;
+}
+
+.result{
+margin-top:15px;
+background:#24153b;
+padding:15px;
+border-radius:10px;
+line-height:1.8;
+word-break:break-word;
+}
+
+/* Footer */
+
+.footer{
+text-align:center;
+margin-top:50px;
+color:#999;
+}
+
+/* Mobile */
+
+@media(max-width:768px){
+
+.logo{
+font-size:40px;
+}
+
+.bg-icons span{
+font-size:80px;
+}
+
+.cards{
+grid-template-columns:1fr;
+}
+
+}
