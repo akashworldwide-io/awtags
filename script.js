@@ -1,76 +1,73 @@
-function showTool(tool){
+function generateKeywords(){
 
-const area = document.getElementById("tool-area");
-area.style.display = "block";
-
-if(tool==="seo"){
-area.innerHTML = `
-<h2>📈 SEO Score Checker</h2>
-<input id="keyword" placeholder="Enter keyword">
-<button class="btn" onclick="checkSEO()">Check SEO</button>
-<div id="result" class="result"></div>
-`;
-}
-
-if(tool==="keywords"){
-area.innerHTML = `
-<h2>🔑 Keyword Generator</h2>
-<input id="keyword" placeholder="Enter keyword">
-<button class="btn" onclick="generateKeywords()">Generate Keywords</button>
-<div id="result" class="result"></div>
-`;
-}
-
-if(tool==="description"){
-area.innerHTML = `
-<h2>📝 Description Generator</h2>
-<input id="keyword" placeholder="Enter keyword">
-<button class="btn" onclick="generateDescription()">Generate Description</button>
-<div id="result" class="result"></div>
-`;
-}
-}
-
-function checkSEO(){
-
-let k=document.getElementById("keyword").value.trim();
+let k =
+document.getElementById("keyword")
+.value.trim();
 
 if(!k){
 alert("Enter keyword");
 return;
 }
 
-let score=Math.min(100,60+k.length*3);
+let keywords = [];
 
-document.getElementById("result").innerHTML=
-`
-SEO Score: <b>${score}/100</b><br><br>
-✅ Search Friendly<br>
-✅ Creator Friendly<br>
-✅ Good Keyword Length
-`;
-}
+let prefixes = [
+"best",
+"top",
+"free",
+"latest",
+"new",
+"ultimate",
+"complete",
+"advanced",
+"easy",
+"professional"
+];
 
-function generateKeywords(){
+let suffixes = [
+"tutorial",
+"guide",
+"tips",
+"tricks",
+"hacks",
+"course",
+"training",
+"shorts",
+"viral",
+"trending",
+"seo",
+"marketing",
+"content",
+"youtube",
+"instagram",
+"facebook",
+"tools",
+"ideas",
+"examples",
+"checklist"
+];
 
-let k=document.getElementById("keyword").value.trim();
+keywords.push(k);
 
-document.getElementById("result").innerHTML=
-`
-${k}<br>
-best ${k}<br>
-${k} tutorial<br>
-${k} tips<br>
-${k} shorts<br>
-${k} viral<br>
-${k} trending
-`;
-}
+prefixes.forEach(p=>{
+keywords.push(p+" "+k);
+});
 
-function generateDescription(){
+suffixes.forEach(s=>{
+keywords.push(k+" "+s);
+});
 
-let k=document.getElementById("keyword").value.trim();
+keywords.push("how to "+k);
+keywords.push("learn "+k);
+keywords.push("what is "+k);
+keywords.push(k+" for beginners");
+keywords.push(k+" for creators");
+keywords.push(k+" 2026");
+keywords.push(k+" 2027");
 
-document.getElementById("result").innerText=
-`Watch this amazing ${k} video. Don't forget to like, share and subscribe for more content.`;
+document.getElementById("result")
+.innerHTML =
+keywords.map(
+x => "• "+x
+).join("<br>");
 }
