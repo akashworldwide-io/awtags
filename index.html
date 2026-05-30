@@ -17,17 +17,54 @@ body{
 background:#0f0a19;
 color:white;
 min-height:100vh;
+overflow-x:hidden;
+}
+
+.bg-icons{
+position:fixed;
+top:0;
+left:0;
+width:100%;
+height:100%;
+pointer-events:none;
+z-index:-1;
+}
+
+.bg-icons span{
+position:absolute;
+font-size:120px;
+opacity:0.06;
+}
+
+.bg-icons span:nth-child(1){
+top:10%;
+left:10%;
+}
+
+.bg-icons span:nth-child(2){
+top:15%;
+right:10%;
+}
+
+.bg-icons span:nth-child(3){
+bottom:15%;
+left:15%;
+}
+
+.bg-icons span:nth-child(4){
+bottom:20%;
+right:15%;
 }
 
 .container{
 max-width:1200px;
 margin:auto;
-padding:60px 20px;
+padding:40px 20px;
 }
 
 .logo{
 text-align:center;
-font-size:48px;
+font-size:52px;
 font-weight:bold;
 color:#c084fc;
 }
@@ -36,7 +73,16 @@ color:#c084fc;
 text-align:center;
 color:#bdbdbd;
 margin-top:10px;
-margin-bottom:50px;
+margin-bottom:40px;
+}
+
+.badge{
+display:inline-block;
+background:#24153b;
+padding:8px 16px;
+border-radius:999px;
+color:#c084fc;
+margin-bottom:20px;
 }
 
 .cards{
@@ -65,45 +111,79 @@ margin-bottom:15px;
 
 .card p{
 color:#d0d0d0;
-line-height:1.7;
+line-height:1.6;
 margin-bottom:20px;
 }
 
 .btn{
-display:block;
 width:100%;
 padding:12px;
 border:none;
 border-radius:10px;
 background:#a855f7;
 color:white;
-font-size:16px;
 cursor:pointer;
 font-weight:bold;
+font-size:15px;
 }
 
 .btn:hover{
 background:#9333ea;
 }
 
-.footer{
-text-align:center;
-margin-top:60px;
-color:#9a9a9a;
+.tool-area{
+margin-top:40px;
+background:#181028;
+padding:25px;
+border-radius:16px;
+border:1px solid #2d1f46;
+display:none;
 }
 
-.badge{
-display:inline-block;
-background:#24153b;
-padding:8px 16px;
-border-radius:999px;
-margin-bottom:20px;
+.tool-area h2{
 color:#c084fc;
+margin-bottom:15px;
+}
+
+.tool-area input{
+width:100%;
+padding:15px;
+border:none;
+border-radius:10px;
+margin-bottom:15px;
+font-size:16px;
+}
+
+.result{
+margin-top:15px;
+background:#24153b;
+padding:15px;
+border-radius:10px;
+line-height:1.8;
+word-break:break-word;
+}
+
+.copy-btn{
+margin-top:10px;
+background:#6d28d9;
+}
+
+.footer{
+text-align:center;
+margin-top:50px;
+color:#999;
 }
 </style>
 </head>
 
 <body>
+
+<div class="bg-icons">
+<span>▶️</span>
+<span>📘</span>
+<span>📸</span>
+<span>𝕏</span>
+</div>
 
 <div class="container">
 
@@ -121,71 +201,185 @@ Free SEO Tools for Content Creators
 
 <div class="card">
 <h2>🏷️ Tag Generator</h2>
-<p>
-Generate optimized YouTube tags instantly and improve your content visibility.
-</p>
-<button class="btn">
+<p>Generate optimized YouTube tags instantly.</p>
+<button class="btn" onclick="showTool('tags')">
 Generate Tags
 </button>
 </div>
 
 <div class="card">
 <h2>🔥 Hashtag Generator</h2>
-<p>
-Create trending hashtags for YouTube, Instagram, Facebook and Shorts.
-</p>
-<button class="btn">
+<p>Create trending hashtags for social media.</p>
+<button class="btn" onclick="showTool('hashtags')">
 Generate Hashtags
 </button>
 </div>
 
 <div class="card">
 <h2>🎯 Title Generator</h2>
-<p>
-Generate engaging video titles designed to attract more clicks.
-</p>
-<button class="btn">
+<p>Generate engaging titles for more clicks.</p>
+<button class="btn" onclick="showTool('titles')">
 Generate Titles
 </button>
 </div>
 
-<div class="card">
-<h2>📈 SEO Score Checker</h2>
-<p>
-Analyze your keywords and improve discoverability with SEO insights.
-</p>
-<button class="btn">
-Check SEO
-</button>
 </div>
 
-<div class="card">
-<h2>🔑 Keyword Generator</h2>
-<p>
-Find related keywords and content ideas for your next video.
-</p>
-<button class="btn">
-Generate Keywords
-</button>
-</div>
-
-<div class="card">
-<h2>📝 Description Generator</h2>
-<p>
-Create SEO-friendly video descriptions in seconds.
-</p>
-<button class="btn">
-Generate Description
-</button>
-</div>
-
-</div>
+<div id="tool-area" class="tool-area"></div>
 
 <div class="footer">
 © 2026 AWTags • Made with 💜 by akashworldwide
 </div>
 
 </div>
+
+<script>
+
+function showTool(tool){
+
+const area=document.getElementById("tool-area");
+
+area.style.display="block";
+
+if(tool==="tags"){
+area.innerHTML=`
+<h2>🏷️ Tag Generator</h2>
+
+<input id="keyword" placeholder="Enter keyword">
+
+<button class="btn" onclick="generateTags()">
+Generate Tags
+</button>
+
+<div id="result" class="result"></div>
+
+<button class="btn copy-btn" onclick="copyResult()">
+📋 Copy
+</button>
+`;
+}
+
+if(tool==="hashtags"){
+area.innerHTML=`
+<h2>🔥 Hashtag Generator</h2>
+
+<input id="keyword" placeholder="Enter keyword">
+
+<button class="btn" onclick="generateHashtags()">
+Generate Hashtags
+</button>
+
+<div id="result" class="result"></div>
+
+<button class="btn copy-btn" onclick="copyResult()">
+📋 Copy
+</button>
+`;
+}
+
+if(tool==="titles"){
+area.innerHTML=`
+<h2>🎯 Title Generator</h2>
+
+<input id="keyword" placeholder="Enter keyword">
+
+<button class="btn" onclick="generateTitles()">
+Generate Titles
+</button>
+
+<div id="result" class="result"></div>
+
+<button class="btn copy-btn" onclick="copyResult()">
+📋 Copy
+</button>
+`;
+}
+
+window.scrollTo({
+top:document.body.scrollHeight,
+behavior:'smooth'
+});
+
+}
+
+function generateTags(){
+
+let k=document.getElementById("keyword").value.trim();
+
+if(!k){
+alert("Enter a keyword");
+return;
+}
+
+let tags=[
+k,
+k+" shorts",
+k+" viral",
+k+" trending",
+k+" youtube",
+k+" tutorial",
+k+" tips",
+"best "+k,
+k+" content",
+k+" creator"
+];
+
+document.getElementById("result").innerText=
+tags.join(", ");
+
+}
+
+function generateHashtags(){
+
+let k=document.getElementById("keyword").value.trim();
+
+if(!k){
+alert("Enter a keyword");
+return;
+}
+
+k=k.replaceAll(" ","");
+
+document.getElementById("result").innerText=
+`#${k}
+#viral
+#trending
+#shorts
+#youtube
+#creator
+#explore
+#content`;
+
+}
+
+function generateTitles(){
+
+let k=document.getElementById("keyword").value.trim();
+
+if(!k){
+alert("Enter a keyword");
+return;
+}
+
+document.getElementById("result").innerHTML=
+`• Best ${k} Tips<br>
+• Top 10 ${k} Secrets<br>
+• Amazing ${k} Compilation<br>
+• ${k} Tutorial For Beginners<br>
+• Ultimate ${k} Guide`;
+
+}
+
+function copyResult(){
+
+let text=document.getElementById("result").innerText;
+
+navigator.clipboard.writeText(text);
+
+alert("Copied Successfully!");
+}
+
+</script>
 
 </body>
 </html>
