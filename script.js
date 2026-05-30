@@ -1,30 +1,14 @@
 function generateKeywords(){
 
-let k =
-document.getElementById("keyword")
-.value.trim();
+let k = document.getElementById("keyword").value.trim();
 
 if(!k){
-alert("Enter keyword");
+alert("Enter a keyword");
 return;
 }
 
-let keywords = [];
-
-let prefixes = [
-"best",
-"top",
-"free",
-"latest",
-"new",
-"ultimate",
-"complete",
-"advanced",
-"easy",
-"professional"
-];
-
-let suffixes = [
+let patterns = [
+"",
 "tutorial",
 "guide",
 "tips",
@@ -32,42 +16,77 @@ let suffixes = [
 "hacks",
 "course",
 "training",
-"shorts",
+"basics",
+"advanced",
+"masterclass",
+"explained",
+"review",
+"update",
+"latest",
+"news",
 "viral",
 "trending",
-"seo",
-"marketing",
-"content",
+"shorts",
+"reels",
+"video",
+"highlights",
+"status",
+"compilation",
 "youtube",
 "instagram",
 "facebook",
-"tools",
+"seo",
+"marketing",
+"content",
+"strategy",
+"free",
+"best",
+"top",
+"new",
+"2026",
+"2027",
+"for beginners",
+"for students",
+"for creators",
+"for youtube",
 "ideas",
 "examples",
-"checklist"
+"tools",
+"apps",
+"software",
+"secrets",
+"checklist",
+"template",
+"how to",
+"what is",
+"why",
+"learn",
+"ultimate guide",
+"complete tutorial"
 ];
 
+let keywords = [];
+
+patterns.forEach(item => {
+
+if(item === ""){
 keywords.push(k);
+}
+else if(
+item === "how to" ||
+item === "what is" ||
+item === "why" ||
+item === "learn"
+){
+keywords.push(item + " " + k);
+}
+else{
+keywords.push(k + " " + item);
+}
 
-prefixes.forEach(p=>{
-keywords.push(p+" "+k);
 });
 
-suffixes.forEach(s=>{
-keywords.push(k+" "+s);
-});
+document.getElementById("result").innerHTML =
+keywords.map(x => "• " + x).join("<br>");
 
-keywords.push("how to "+k);
-keywords.push("learn "+k);
-keywords.push("what is "+k);
-keywords.push(k+" for beginners");
-keywords.push(k+" for creators");
-keywords.push(k+" 2026");
-keywords.push(k+" 2027");
-
-document.getElementById("result")
-.innerHTML =
-keywords.map(
-x => "• "+x
-).join("<br>");
 }
