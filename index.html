@@ -3,86 +3,102 @@
 <head>
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
-<title>AWTags - Free Tag Generator</title>
+<title>AWTags</title>
 
 <style>
 *{
-    margin:0;
-    padding:0;
-    box-sizing:border-box;
-    font-family:Arial,sans-serif;
+margin:0;
+padding:0;
+box-sizing:border-box;
+font-family:Arial,sans-serif;
 }
 
 body{
-    background:linear-gradient(135deg,#4b0082,#7b2cbf);
-    min-height:100vh;
-    display:flex;
-    justify-content:center;
-    align-items:center;
-    padding:20px;
+background:#0f0a19;
+color:white;
+min-height:100vh;
 }
 
 .container{
-    width:100%;
-    max-width:700px;
-    background:#fff;
-    border-radius:20px;
-    padding:30px;
-    box-shadow:0 10px 30px rgba(0,0,0,.2);
+max-width:1200px;
+margin:auto;
+padding:60px 20px;
 }
 
-h1{
-    text-align:center;
-    color:#7b2cbf;
-    margin-bottom:10px;
+.logo{
+text-align:center;
+font-size:48px;
+font-weight:bold;
+color:#c084fc;
 }
 
-p{
-    text-align:center;
-    color:#666;
-    margin-bottom:20px;
+.subtitle{
+text-align:center;
+color:#bdbdbd;
+margin-top:10px;
+margin-bottom:50px;
 }
 
-input{
-    width:100%;
-    padding:15px;
-    border:2px solid #7b2cbf;
-    border-radius:12px;
-    font-size:16px;
+.cards{
+display:grid;
+grid-template-columns:repeat(auto-fit,minmax(300px,1fr));
+gap:20px;
 }
 
-button{
-    width:100%;
-    margin-top:15px;
-    padding:15px;
-    border:none;
-    border-radius:12px;
-    background:#7b2cbf;
-    color:white;
-    font-size:16px;
-    cursor:pointer;
-    font-weight:bold;
+.card{
+background:#181028;
+border:1px solid #2d1f46;
+border-radius:16px;
+padding:25px;
+transition:.3s;
 }
 
-button:hover{
-    background:#5a189a;
+.card:hover{
+transform:translateY(-5px);
+border-color:#a855f7;
 }
 
-#result{
-    margin-top:20px;
-    background:#f5f0ff;
-    padding:15px;
-    border-radius:12px;
-    min-height:100px;
-    white-space:pre-wrap;
-    color:#333;
+.card h2{
+color:#c084fc;
+margin-bottom:15px;
+}
+
+.card p{
+color:#d0d0d0;
+line-height:1.7;
+margin-bottom:20px;
+}
+
+.btn{
+display:block;
+width:100%;
+padding:12px;
+border:none;
+border-radius:10px;
+background:#a855f7;
+color:white;
+font-size:16px;
+cursor:pointer;
+font-weight:bold;
+}
+
+.btn:hover{
+background:#9333ea;
 }
 
 .footer{
-    text-align:center;
-    margin-top:20px;
-    color:#777;
-    font-size:14px;
+text-align:center;
+margin-top:60px;
+color:#9a9a9a;
+}
+
+.badge{
+display:inline-block;
+background:#24153b;
+padding:8px 16px;
+border-radius:999px;
+margin-bottom:20px;
+color:#c084fc;
 }
 </style>
 </head>
@@ -91,85 +107,85 @@ button:hover{
 
 <div class="container">
 
-<h1>💜 AWTags</h1>
-<p>Free YouTube Tag Generator</p>
+<div style="text-align:center;">
+<span class="badge">💜 AWTags by akashworldwide</span>
+</div>
 
-<input
-id="keyword"
-type="text"
-placeholder="Enter keyword (example: cricket)"
->
+<h1 class="logo">AWTags</h1>
 
-<button onclick="generateTags()">
-🚀 Generate Tags
+<p class="subtitle">
+Free SEO Tools for Content Creators
+</p>
+
+<div class="cards">
+
+<div class="card">
+<h2>🏷️ Tag Generator</h2>
+<p>
+Generate optimized YouTube tags instantly and improve your content visibility.
+</p>
+<button class="btn">
+Generate Tags
 </button>
+</div>
 
-<button onclick="copyTags()">
-📋 Copy Tags
+<div class="card">
+<h2>🔥 Hashtag Generator</h2>
+<p>
+Create trending hashtags for YouTube, Instagram, Facebook and Shorts.
+</p>
+<button class="btn">
+Generate Hashtags
 </button>
+</div>
 
-<div id="result">
-Generated tags will appear here...
+<div class="card">
+<h2>🎯 Title Generator</h2>
+<p>
+Generate engaging video titles designed to attract more clicks.
+</p>
+<button class="btn">
+Generate Titles
+</button>
+</div>
+
+<div class="card">
+<h2>📈 SEO Score Checker</h2>
+<p>
+Analyze your keywords and improve discoverability with SEO insights.
+</p>
+<button class="btn">
+Check SEO
+</button>
+</div>
+
+<div class="card">
+<h2>🔑 Keyword Generator</h2>
+<p>
+Find related keywords and content ideas for your next video.
+</p>
+<button class="btn">
+Generate Keywords
+</button>
+</div>
+
+<div class="card">
+<h2>📝 Description Generator</h2>
+<p>
+Create SEO-friendly video descriptions in seconds.
+</p>
+<button class="btn">
+Generate Description
+</button>
+</div>
+
 </div>
 
 <div class="footer">
-Made with 💜 by akashworldwide
+© 2026 AWTags • Made with 💜 by akashworldwide
 </div>
 
 </div>
-
-<script>
-
-function generateTags(){
-
-let keyword =
-document.getElementById("keyword")
-.value
-.trim();
-
-if(keyword===""){
-alert("Enter a keyword");
-return;
-}
-
-let tags = [
-
-keyword,
-keyword+" shorts",
-keyword+" video",
-keyword+" viral",
-keyword+" trending",
-keyword+" status",
-keyword+" edit",
-keyword+" reel",
-keyword+" youtube",
-keyword+" channel",
-"best "+keyword,
-keyword+" tutorial",
-keyword+" tips",
-keyword+" 2026",
-keyword+" content"
-
-];
-
-document.getElementById("result")
-.innerText =
-tags.join(", ");
-
-}
-
-function copyTags(){
-
-let text =
-document.getElementById("result")
-.innerText;
-
-navigator.clipboard.writeText(text);
-
-alert("Tags copied!");
-}
-
-</script>
 
 </body>
 </html>
