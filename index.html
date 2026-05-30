@@ -1,0 +1,175 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>AWTags - Free Tag Generator</title>
+
+<style>
+*{
+    margin:0;
+    padding:0;
+    box-sizing:border-box;
+    font-family:Arial,sans-serif;
+}
+
+body{
+    background:linear-gradient(135deg,#4b0082,#7b2cbf);
+    min-height:100vh;
+    display:flex;
+    justify-content:center;
+    align-items:center;
+    padding:20px;
+}
+
+.container{
+    width:100%;
+    max-width:700px;
+    background:#fff;
+    border-radius:20px;
+    padding:30px;
+    box-shadow:0 10px 30px rgba(0,0,0,.2);
+}
+
+h1{
+    text-align:center;
+    color:#7b2cbf;
+    margin-bottom:10px;
+}
+
+p{
+    text-align:center;
+    color:#666;
+    margin-bottom:20px;
+}
+
+input{
+    width:100%;
+    padding:15px;
+    border:2px solid #7b2cbf;
+    border-radius:12px;
+    font-size:16px;
+}
+
+button{
+    width:100%;
+    margin-top:15px;
+    padding:15px;
+    border:none;
+    border-radius:12px;
+    background:#7b2cbf;
+    color:white;
+    font-size:16px;
+    cursor:pointer;
+    font-weight:bold;
+}
+
+button:hover{
+    background:#5a189a;
+}
+
+#result{
+    margin-top:20px;
+    background:#f5f0ff;
+    padding:15px;
+    border-radius:12px;
+    min-height:100px;
+    white-space:pre-wrap;
+    color:#333;
+}
+
+.footer{
+    text-align:center;
+    margin-top:20px;
+    color:#777;
+    font-size:14px;
+}
+</style>
+</head>
+
+<body>
+
+<div class="container">
+
+<h1>💜 AWTags</h1>
+<p>Free YouTube Tag Generator</p>
+
+<input
+id="keyword"
+type="text"
+placeholder="Enter keyword (example: cricket)"
+>
+
+<button onclick="generateTags()">
+🚀 Generate Tags
+</button>
+
+<button onclick="copyTags()">
+📋 Copy Tags
+</button>
+
+<div id="result">
+Generated tags will appear here...
+</div>
+
+<div class="footer">
+Made with 💜 by akashworldwide
+</div>
+
+</div>
+
+<script>
+
+function generateTags(){
+
+let keyword =
+document.getElementById("keyword")
+.value
+.trim();
+
+if(keyword===""){
+alert("Enter a keyword");
+return;
+}
+
+let tags = [
+
+keyword,
+keyword+" shorts",
+keyword+" video",
+keyword+" viral",
+keyword+" trending",
+keyword+" status",
+keyword+" edit",
+keyword+" reel",
+keyword+" youtube",
+keyword+" channel",
+"best "+keyword,
+keyword+" tutorial",
+keyword+" tips",
+keyword+" 2026",
+keyword+" content"
+
+];
+
+document.getElementById("result")
+.innerText =
+tags.join(", ");
+
+}
+
+function copyTags(){
+
+let text =
+document.getElementById("result")
+.innerText;
+
+navigator.clipboard.writeText(text);
+
+alert("Tags copied!");
+}
+
+</script>
+
+</body>
+</html>
